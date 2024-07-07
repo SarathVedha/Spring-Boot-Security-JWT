@@ -1,0 +1,4 @@
+jwt:
+  secretKey: b98e810f698f9595b59d66e65441d270947152a393d3e3b0011d7ee5e53676db
+  expiration: 300000 # Minute 5
+  refreshExpiration: 86400000 # 1 day

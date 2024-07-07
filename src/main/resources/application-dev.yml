@@ -1,0 +1,62 @@
+server:
+  port: 8080
+
+spring:
+  h2:
+    console:
+      enabled: true
+  datasource:
+    url: jdbc:h2:mem:db
+    username: admin
+    password: admin
+    name: H2
+    hikari:
+      leak-detection-threshold: 20000
+      connection-timeout: 20000
+      maximum-pool-size: 10
+      pool-name: H2-Hikari-Pool
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+        use_sql_comments: true
+    open-in-view: false
+  config:
+    import: classpath:jwt-config.yml
+#  security:
+#    user:
+#      name: vedha
+#      password: $2a$10$Wx71isxDox0MKBAe/52J8.h8mL9gDrMGpSBadZB3p8idXftybeQu6
+#      roles: ADMIN
+
+logging:
+  level:
+    com:
+      vedha: debug
+
+management:
+  endpoint:
+    health:
+      show-details: always
+    shutdown:
+      enabled: true
+    env:
+      enabled: true
+    configprops:
+      show-values: when_authorized
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  info:
+    env:
+      enabled: true
+    java:
+      enabled: true
+    os:
+      enabled: true
+    process:
+      enabled: true
